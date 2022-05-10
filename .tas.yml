@@ -1,7 +1,6 @@
 
 postMerge :
-  env: 
-     - SOME_ENV=SOME_VALUE
+  
   subModules:          #Not to be changed
       - name: weex       #Can be changed
         path : "./"
@@ -37,8 +36,7 @@ postMerge :
         configFile : "./test/ssr/jasmine.js"
         
 preMerge : 
-  env: 
-     - SOME_ENV=SOME_VALUE
+  
   subModules:          #Not to be changed
       - name: weex       #Can be changed
         path : "./"

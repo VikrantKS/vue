@@ -1,14 +1,86 @@
-  framework: jasmine      # Mention the testing framework mocha, jest or jasmine.
-  preRun:
-    command:
-      - npm ci          # Mention pre-run steps here
-  postMerge:
-    pattern:
-      - "./test/**/*.js" # Glob pattern to path where tests that should run post-merge are written.
-  preMerge:
-    pattern:
-      - "./test/**/*.js" # Glob pattern to path where tests that should run pre-merge are written.
-  postRun:
-    command:
-      - node --version # Mention post-run steps here
-  version: 1.0
+
+
+
+postMerge :
+  env: 
+     - SOME_ENV=SOME_VALUE
+  subModules:          #Not to be changed
+      - name: weex       #Can be changed
+        path : "./"
+        pattern: 
+          - "./test/weex/**/*[sS]pec.js"
+        
+        framework : jasmine
+        
+        preRun: 
+          command:
+              - npm ci
+              - npm run build:weex
+          env:
+            - JASMINE_CONFIG_PATH="test/weex/jasmine.js"
+        postRun:
+            command:
+              - node --version
+        configFile : "./test/weex/jasmine.js"
+        
+      - name: ssr       
+        path : "./"
+        pattern: 
+          - "test/ssr/*.spec.js"
+        
+        framework : jasmine
+        
+        preRun: 
+          command:
+              - npm ci
+              - npm run build:weex
+          env:
+            - JASMINE_CONFIG_PATH="test/ssr/jasmine.js"
+        postRun:
+            command:
+              - node --version
+        configFile : "./test/ssr/jasmine.js"
+        
+preMerge : 
+  env: 
+     - SOME_ENV=SOME_VALUE
+  subModules:          #Not to be changed
+      - name: weex       #Can be changed
+        path : "./"
+        pattern: 
+          - "./test/weex/**/*[sS]pec.js"
+        
+        framework : jasmine
+        
+        preRun: 
+          command:
+              - npm i
+              - npm run build:weex
+          env:
+            - JASMINE_CONFIG_PATH="test/weex/jasmine.js"
+        postRun:
+            command:
+              - node --version
+        configFile : "./test/weex/jasmine.js"
+        
+      - name: ssr       
+        path : "./"
+        pattern: 
+          - "test/ssr/*.spec.js"
+        
+        framework : jasmine
+        
+        preRun: 
+          command:
+              - npm i
+              - npm run build:weex
+          env:
+            - JASMINE_CONFIG_PATH="test/ssr/jasmine.js"
+        postRun:
+            command:
+              - node --version
+        configFile : "./test/ssr/jasmine.js"
+        
+  
+parallelism: 2 # this will be depricated in future
+version : 2.0

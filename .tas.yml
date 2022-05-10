@@ -1,6 +1,4 @@
 
-
-
 postMerge :
   env: 
      - SOME_ENV=SOME_VALUE
@@ -16,8 +14,6 @@ postMerge :
           command:
               - npm ci
               - npm run build:weex
-          env:
-            - JASMINE_CONFIG_PATH="test/weex/jasmine.js"
         postRun:
             command:
               - node --version
@@ -34,8 +30,7 @@ postMerge :
           command:
               - npm ci
               - npm run build:weex
-          env:
-            - JASMINE_CONFIG_PATH="test/ssr/jasmine.js"
+          
         postRun:
             command:
               - node --version
@@ -56,8 +51,7 @@ preMerge :
           command:
               - npm i
               - npm run build:weex
-          env:
-            - JASMINE_CONFIG_PATH="test/weex/jasmine.js"
+          
         postRun:
             command:
               - node --version
@@ -74,8 +68,7 @@ preMerge :
           command:
               - npm i
               - npm run build:weex
-          env:
-            - JASMINE_CONFIG_PATH="test/ssr/jasmine.js"
+          
         postRun:
             command:
               - node --version

@@ -11,7 +11,7 @@ postMerge :
         
         preRun: 
           command:
-              - npm ci
+              - npm i
               - npm run build:weex
         postRun:
             command:
@@ -27,7 +27,7 @@ postMerge :
         
         preRun: 
           command:
-              - npm ci
+              - npm i
               - npm run build:weex
           
         postRun:

@@ -28,7 +28,7 @@ postMerge :
         preRun: 
           command:
               - npm i
-              - npm run build:weex
+              - npm run build:ssr
           
         postRun:
             command:
@@ -65,7 +65,7 @@ preMerge :
         preRun: 
           command:
               - npm i
-              - npm run build:weex
+              - npm run build:ssr
           
         postRun:
             command:

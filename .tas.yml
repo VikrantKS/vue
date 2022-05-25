@@ -75,7 +75,4 @@ preMerge :
         configFile : "./test/ssr/jasmine.js"
         
   
-parallelism: 2 # this will be depricated in future
-version : 2.0
-
-
+version : 2.0.1
